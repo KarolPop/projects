@@ -8,7 +8,7 @@ sass: {
 	}, 
 	dist: { 
 			files: { 
-				'css/main.css': 'sass/main.sass' 
+				'style.css': 'style.sass' 
 			} 
 		} 
 	},
@@ -38,23 +38,36 @@ sass: {
         dev: {
             bsFiles: {
                 src : [
-                    'app/css/*.css',
-                    'app/*.html'
+                    '*.css',
+                    '*.html'
                 ]
             },
             options: {
                 watchTask: true,
-                server: './app'
+                server: './'
             }
         }
     }
 
+/*    browserSync: {
+    bsFiles: {
+        src : '*.css',
+        	  '*.html'
+    },
+    options: {
+        server: {
+            baseDir: "./"
+        }
+    }
+}
+*/
 }); 
 	// Load the plugins tasks 
 	grunt.loadNpmTasks('grunt-sass');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-browser-sync');
 	// Default task(s). 
 
-	grunt.registerTask('default', ['browserSync', 'sass', 'imagemin']); 
+	grunt.registerTask('default', ['browserSync', 'imagemin', 'sass', 'watch']); 
 };
